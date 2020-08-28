@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Details from './pages/Details';
+import ProductList from './pages/ProductList';
+import Upload from './pages/Upload';
+import Error from './pages/Error';
+import Cart from './components/Cart';
+import Navbar from './components/Navbar';
+import Modal from './components/Modal';
+import Footer from './components/Footer';
+
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <React.Fragment>
+         <Navbar />
+         <Switch>
+            <Route exact path = "/" component = {ProductList} />
+            <Route exact path = "/details" component = {Details} />
+            <Route exact path = "/cart" component = {Cart} />
+            <Route exact path = "/upload" component = {Upload} />
+            <Route component = {Error} />
+         </Switch>
+         <Modal />
+         <Footer />
+      </React.Fragment>
+    );
+   }
 }
 
 export default App;

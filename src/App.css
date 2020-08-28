@@ -1,38 +1,92 @@
-.App {
+:root{
+  --mainBlue : #2a2a72;
+  --lightBlue : #009ffd;
+  --mainWhite : #f3f3f3;
+  --mainDark : #232528;
+  --mainYellow : #ffa400;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important;
+}
+
+.text-title {
+  font-family: 'Ubuntu',cursive;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.text-blue {
+  color : var(--mainBlue);
+}
+.text-bright {
+  color: var(--lightBlue);
+}
+
+.btn-black {
+  background: transparent;
+  text-transform: capitalize;
+  font-size: 0.8rem !important;
+  color : var(--mainDark);
+  border-radius: 0 !important;
+  border: 0.1rem solid var(--mainDark) !important;
+}
+
+.btn-black:hover {
+  background: var(--mainDark) !important;
+  color: var(--mainWhite) !important;
+}
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color : var(--mainYellow);
+}
+
+.footer{
+  padding: 100px 20px 15px;
+  background-image: linear-gradient(#2d557d, #9610fb);
+  color: #fff;
+}
+
+.footer-logo{
+  width: 150px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+}
+
+.footer h4{
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+}
+
+.footer p{
+  font-size: 12px;
+  text-align: justify;
+  padding-right: 35px;
+}
+
+.footer .row .fa{
+  padding-right: 20px;
+  font-size: 15px;
+}
+
+.footer hr{
+  margin-top: 10px;
+  background: #efefef;
+}
+
+.fa-heart{
+  margin: 0 5px;
+  color: #f44336;
+}
+
+.footer .copyright{
   text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

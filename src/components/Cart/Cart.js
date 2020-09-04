@@ -17,10 +17,12 @@ class Cart extends React.Component {
         if (cart.length > 0) {
           return (
             <React.Fragment>
+            <div className = "overflow-hidden">
               <Title name = "your" title = "cart" />
               <CartColumns />
               <CartList value = {value}/>
               <CartTotals value = {value} />
+            </div>
             </React.Fragment>
           );
         } else {

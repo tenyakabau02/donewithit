@@ -8,8 +8,10 @@ class ProductProvider extends React.Component {
     super();
     this.state = {
       products : [],
+      sortedProducts : [],
       detailProduct: detailProduct,
-      cart : storeProducts,
+      cart : [],
+      category : "all",
       modalOpen : false,
       modallProduct : detailProduct,
       cartSubTotal : 0,
@@ -27,12 +29,44 @@ class ProductProvider extends React.Component {
     storeProducts.forEach(item =>{
       const singleItem = {...item};
       tempProducts = [...tempProducts, singleItem];
-
     })
     this.setState(() => {
-      return { products : tempProducts}
+      return {
+        products : tempProducts,
+        sortedProducts : tempProducts
+      }
     });
   }
+
+  // function to handle change on any input box
+  handleChange = (event) => {
+    const target = event.target;
+    const name = event.target.name;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    this.setState({
+      [name] : value
+    },this.filterProducts)
+  };
+
+  // function to filter the rooms
+
+  filterProducts = () => {
+    let { sortedProducts, products, category } = this.state;
+
+    //all the rooms
+    let tempProducts = [...products];
+
+    //filter by category
+    if (category !== "all") {
+      tempProducts = tempProducts.filter(product =>  product.category === category);
+    }
+
+     //change state
+      this.setState({
+        sortedProducts : tempProducts
+      });
+  };
+
 
   getItem = (id) => {
     const product = this.state.products.find(item => item.id === id);
@@ -66,7 +100,7 @@ class ProductProvider extends React.Component {
   };
 
 openModal = (id) => {
-  const pproduct = this.getItem(id);
+  const product = this.getItem(id);
   this.setState(() => {
     return { modallProduct : product, modalOpen: true }
   })
@@ -116,7 +150,7 @@ openModal = (id) => {
   };
 
   removeItem = (id) => {
-    let tempProducts = [...this.state.prodcts];
+    let tempProducts = [...this.state.products];
     let tempCart = [...this.state.cart]
 
     tempCart = tempCart.filter(item => item.id !== id);
@@ -150,7 +184,7 @@ openModal = (id) => {
   addTotals = () => {
     let subTotal = 0;
     this.state.cart.map(item => {
-      subTotal += item.total
+     return subTotal += item.total
     });
     const tempTax = subTotal * 0.1;
     const tax = parseFloat(tempTax.toFixed(2));
@@ -168,6 +202,8 @@ openModal = (id) => {
     return (
       <ProductContext.Provider value = {{
         ...this.state,
+        getItem : this.getItem,
+        handleChange : this.handleChange,
         handleDetail : this.handleDetail,
         addToCart : this.addToCart,
         openModal : this.openModal,
@@ -184,5 +220,13 @@ openModal = (id) => {
 }
 
 const ProductConsumer = ProductContext.Consumer;
+
+export function withProductConsumer(Component){
+  return function ConsumerWrapper(props){
+    return <ProductConsumer>
+    { value => <Component {...props} context = {value} />}
+    </ProductConsumer>
+  }
+}
 
 export { ProductProvider, ProductConsumer};

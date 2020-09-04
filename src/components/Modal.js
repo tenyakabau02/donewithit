@@ -11,7 +11,7 @@ class Modal extends React.Component {
      <ProductConsumer>
         {(value) => {
           const { modalOpen, closeModal} = value;
-          const { img, title, price } = value.modalProduct;
+          const { img, title, price } = value.detailProduct;
 
           if(!modalOpen){
             return null;

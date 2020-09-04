@@ -4,12 +4,24 @@
   --mainWhite : #f3f3f3;
   --mainDark : #232528;
   --mainYellow : #ffa400;
+  --offGrey : #35424a;
+  --secondaryColor : #ef8172;
+  --primaryColor: #af9a7d;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #cfcfcf;
 }
 
 body {
   font-family: 'Montserrat', sans-serif !important;
   background: var(--mainWhite) !important;
   color: var(--mainDark) !important;
+}
+
+.show-nav {
+  height: 40vh;
 }
 
 .text-title {
@@ -45,24 +57,30 @@ body {
   color : var(--mainYellow);
 }
 
+.empty-search {
+  text-align: center;
+  text-transform: capitalize;
+  margin: 2rem 0;
+  padding: 1rem;
+  letter-spacing: var(--mainSpacing);
+}
+
+.filter-container {
+  padding: 0.5rem 0;
+}
+.filter-form {
+  width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 40px;
+}
+
 .footer{
-  padding: 100px 20px 15px;
-  background-image: linear-gradient(#2d557d, #9610fb);
+  padding: 40px 20px 10px;
+  background: var(--mainBlue);
   color: #fff;
-}
-
-.footer-logo{
-  width: 150px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-}
-
-.footer h4{
-  text-align: left;
-  margin-top: 15px;
-  margin-bottom: 25px;
-
 }
 
 .footer p{
@@ -71,19 +89,15 @@ body {
   padding-right: 35px;
 }
 
-.footer .row .fa{
-  padding-right: 20px;
-  font-size: 15px;
-}
 
 .footer hr{
   margin-top: 10px;
-  background: #efefef;
+  background: var(--lightBlue);
 }
 
-.fa-heart{
+.footer-icon{
   margin: 0 5px;
-  color: #f44336;
+  color: var(--mainYellow);
 }
 
 .footer .copyright{
